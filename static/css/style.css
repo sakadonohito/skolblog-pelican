@@ -1,0 +1,303 @@
+     * {
+	 margin: 0;
+	 padding: 0;
+     }
+     body {
+	 /*font-family:;*/
+	 font-size: 2rem;
+     }
+
+     .parent {
+	 display: grid;
+	 grid-template-columns: repeat(12, 1fr);
+	 grid-template-rows: 25vh 1fr auto;
+	 gap: 0px;
+	 row-gap: 1rem;
+	 min-height: 100vh;
+	 container: layout/inline-size;
+     }
+
+     .header {
+	 grid-column: span 12;
+
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: space-between;
+	 background-color: #f8f8f8;
+	 border-bottom: 1px solid #ccc;
+
+	 background-image: url('../img/sample_header_image_3000x175.webp');
+	 background-size: cover;
+	 background-position: center;
+	 max-hight: 175px;
+
+     }
+
+     .site-title-container {
+	 display: flex;
+	 align-items: flex-start; /* 左上に揃える */
+	 margin: 1rem;
+     }
+
+     .navi-container {
+	 display: flex;
+	 align-items: center; /* ナビとロゴを横並びで下部に配置 */
+	 justify-content: flex-start;
+	 background-color: #4F2683;
+	 /*margin-top: auto;*/
+     }
+
+     .logo-container {
+	 display: flex;
+	 align-items: center;
+	 margin-left: 15px;
+	 margin-right: 20px;
+     }
+
+     .logo-image {
+	 width: 50px;
+	 height: auto;
+	 margin-right: 15px;
+     }
+
+     .site-name {
+	 font-size: 1.8rem;
+	 margin: 0;
+     }
+
+     .nav-menu ul {
+	 display: flex;
+	 list-style-type: none;
+	 margin: 0;
+	 padding: 0;
+	 align-items: center;
+     }
+
+     .nav-menu ul li {
+	 margin-right: 20px;
+     }
+
+     .nav-menu ul li a {
+	 display: block;
+	 line-height: 48px;
+	 text-decoration: none;
+	 font-size: 1.2rem;
+	 color: #ffffff;
+     }
+
+     .nav-menu ul li a:hover {
+	 color: #007bff; /* ホバー時の色変更 */
+     }
+
+     .main {
+	 grid-column: 4 / 10;
+	 grid-row-start: 2;
+	 container: main-container/inline-size;
+     }
+
+     @container layout (max-width: 1165px) { /* iPad Air h */
+	 .main {
+	     grid-column: 3 / 9;
+
+	 }
+     }
+/*     @container layout (max-width: 896px) {*/ /* iPhone XR h */
+     @container layout (max-width: 912px) { /* Surface Pro 7 v */
+	 .main {
+	     grid-column: span 9;
+	 }
+     }
+     @container layout (max-width: 430px) {
+	 .main {
+	     grid-column: span 12;
+	 }
+     }
+
+     .content {
+	 display: grid;
+	 grid-template-columns: repeat(12, 1fr);
+	 grid-template-rows: auto auto;
+	 gap: 10px;
+	 padding: 10px;
+	 max-width: calc(100vw / 2);
+	 container: contents-container/inline-size;
+     }
+     @container main-container (max-width: 844px) { /* iPhone 12Pro h */
+	 .content {
+	     max-width: calc(100vw * 2 / 3);
+	     margin-left: auto;
+	 }
+     }
+
+    @container main-container (max-width: 430px) { /* スマホ v 最大値 */
+	 .content {
+	     max-width: 100%;
+	 }
+     }
+
+     .item {
+	 background-color: #f9f9f9;
+	 padding: 10px auto;
+	 border: 1px solid #ccc;
+	 text-align: center;
+	 aspect-ratio: 792 / 586;
+	 width: auto;
+     }
+
+     .content > article {
+	 grid-column: span 12;
+     }
+     .content > article > section {
+	 margin: 10px auto;
+     }
+     .content > article > section > p {
+	 font-size: 1.25rem;
+     }
+
+     /* TOP画面の1つ目のアイテムは大きくする */
+     .item.large {
+	 grid-column: span 12;
+	 max-width: 792px;
+	 justify-self: center;
+	 width: 100%;
+     }
+
+     /* リストレイアウトの時の1行目のタイトル要素 */
+     .item.list-title-container {
+	 grid-column: span 12;
+	 max-width: 792px;
+	 width: 100%;
+	 aspect-ratio: unset;
+	 background-color: unset;
+	 border: unset;
+     }
+     .item.list-title-container > h2 {
+	 text-align: left;
+	 display: inline-block;
+	 width: 100%;
+	 border-bottom: 1px solid #ccc;
+	 font-size: 1.5rem;
+     }
+
+     /* 2つ目以降のアイテムは小さく、2x2に並べる */
+     .item.middle {
+	 grid-column: span 6;
+	 max-width: calc(396px - 6px) ;/* gap他見栄えの分調整 */
+	 width: 100%;
+     }
+
+     .item.middle:nth-child(odd) {
+	 justify-self: start;
+     }
+
+     .item.middle:nth-child(even) {
+	 justify-self: end;
+     }
+
+     /* 4列であるだけ並べる */
+     .item.small {
+	 grid-column: span 3;
+	 width: 100%;
+	 max-width: calc(((100vw / 2) - 50px) / 4);
+     }
+
+     @container contents-container (max-width: 640px) {
+	 .item.small {
+	     grid-column: span 4;
+	     /*max-width: calc(((100vw / 2) - 40px) / 3);*/
+	     max-width: 100%;
+	 }
+     }
+     /*@container contents-container (max-width: 486px) {*/
+     @container contents-container (max-width: 480px) { /* Surface Duo h?  */
+	 .item.small {
+	     grid-column: span 6;
+	     /*max-width: calc(((100vw / 2) - 30px) / 2);*/
+	 }
+     }
+
+     @container contents-container (max-width: 430px) { /* スマホv の最大値 */
+	 .content .item.large {
+	     max-width: 100%;
+	 }
+	 .item.middle {
+	     grid-column: span 12;
+	 max-width: 100vw;
+	 }
+	 .item.small {
+	     grid-column: span 12;
+	     max-width: 100vw;
+	 }
+     }
+
+     .content > article > section > pre {
+	 white-space: pre-wrap;  /* テキストを折り返す */
+	 word-wrap: break-word;  /* 長い単語でも折り返しを許可 */
+	 width: 100%;            /* 親要素の幅に合わせる */
+	 max-width: 100%;        /* 親要素を超えない */
+	 box-sizing: border-box;  /* パディングやボーダーを含めて幅を計算 */
+	 margin: 10px;
+     }
+
+     .eye-catching-image-container {
+	 aspect-ratio: 1.77; /* ほぼ全ての画像枠に対応するアスペクト比 */
+	 width: 100%; /* レスポンシブに対応 */
+	 max-width: 1248px;
+	 height: auto;
+	 position: relative;
+     }
+
+     .eye-catching-image {
+         width: 100%;
+         height: auto;
+	 display: block;
+     }
+
+     .eye-catching-image:empty {
+	 background-image: url('../img/noimage_1248x772.webp');
+	 background-size: cover;
+	 background-position: center;
+	 width: 100%;
+	 height: 100%;
+     }
+
+     .item > .title {
+         font-size: 1.25rem;
+         margin-top: 10px;
+	 margin-left: 1rem;
+	 text-align: left;
+     }
+
+     .content > article > section > h2.title {
+	 font-size: 3rem;
+     }
+
+     .item.large > .title {
+	 font-size: 1.5rem;
+     }
+
+     .item > .date {
+         font-size: 1rem;
+         color: #888;
+	 margin-left: 1rem;
+	 text-align: left;
+     }
+
+     .side-part {
+	 grid-column: 10 / 12;
+	 grid-row: 2;
+     }
+     @container (max-width: 430px) {
+	 .parent .side-part {
+	     display: none;
+	 }
+     }
+
+     .footer-part {
+	 grid-column: span 12;
+	 grid-row-start: 3;
+	 display: flex;
+	 justify-content: center;
+	 background-color: #4F2683;
+	 color: #FFFFFF;
+     }
