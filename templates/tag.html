@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+タグ: {{ tag }} の記事一覧
+{% endblock %}
+
+{% block content %}
+	<div class="content">
+
+	  <div class="item list-title-container">
+            <h2 class="title">タグ: {{ tag }}</h2>
+	  </div>
+
+	  {% for article in articles %}
+
+	  <div class="item small">
+	    <a href="{{ SITEURL}}/{{ article.url }}" class="article-card">
+              <div class="eye-catching-image-container">
+		{% if article.metadata.image %}
+		<img src="{{ SITEURL }}/{{ article.metadata.image }}" alt="{{ article.title}}" class="eye-catching-image" />
+		{% else %}
+		<img src="" alt="No image." class="eye-catching-image">
+		{% endif %}
+	      </div>
+              <h2 class="title">{{ article.title}}</h2>
+              <p class="date">投稿日: {{ article.date.strftime('%Y-%m-%d') }}</p>
+	    </a>
+	  </div>
+
+	  {% endfor %}
+
+	  {% if articles|length == 0 %}
+	  <p>記事はまだありません。</p>
+	  {% endif %}
+
+	</div>
+
+	{% if articles|length > 20 %}
+	<div class="pagenation-container"><p>more...</p></div>
+	{% endif %}
+
+	{% endblock %}

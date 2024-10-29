@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+アーカイブ: シーズン {{ period[0] }} の記事一覧
+{% endblock %}
+
+{% block content %}
+	<div class="content">
+
+	  <div class="item list-title-container">
+            <h2 class="title">シーズン: {{ period[0] }}</h2>
+	  </div>
+
+	  {% for article in dates %}
+
+	  <div class="item small">
+	    <a href="{{ SITEURL}}/{{ article.url }}" class="article-card">
+              <div class="eye-catching-image-container">
+		{% if article.metadata.image %}
+		<img src="{{ SITEURL }}/{{ article.metadata.image }}" alt="{{ article.title}}" class="eye-catching-image" />
+		{% else %}
+		<img src="" alt="No image." class="eye-catching-image">
+		{% endif %}
+	      </div>
+              <h2 class="title">{{ article.title}}</h2>
+              <p class="date">投稿日: {{ article.date.strftime('%Y-%m-%d') }}</p>
+	    </a>
+	  </div>
+
+	  {% endfor %}
+
+	  {% if dates|length == 0 %}
+	  <p>今シーズンの記事はまだありません。</p>
+	  {% endif %}
+
+	</div>
+
+	{% if dates|length > 20 %}
+	<div class="pagenation-container"><p>more...</p></div>
+	{% endif %}
+
+{% endblock %}

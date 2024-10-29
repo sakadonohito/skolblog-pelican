@@ -1,0 +1,42 @@
+	<div class="sp-navi-container">
+	  <input type="checkbox" id="toggle-menu" class="toggle-menu">
+	  <label for="toggle-menu" class="hamburger">☰</label>
+	  <nav class="sp-nav-menu" id="sp-nav-menu">
+            <div class="close">
+	      <label for="toggle-menu" class="close">×</label>
+	    </div>
+            <ul>
+	      <li><a href="{{SITEURL}}/">Home</a></li>
+              <li><a href="{{SITEURL}}/archives.html">Archives</a></li>
+              <li>
+                <a href="{{SITEURL}}/categories.html">Categories</a>
+                <ul class="submenu">
+
+		  {% for category,articles in categories %}
+		  <li>
+		    <a href="{{ SITEURL }}/{{ category.url}}" class="">
+		      {{ category }}
+		    </a>
+		  </li>
+	          {% endfor %}
+
+                </ul>
+              </li>
+              <li>
+                <a href="{{SITEURL}}/tags.html">Tags</a>
+                <ul class="submenu">
+
+		  {% for tag,articles in tags %}
+		  <li>
+		    <a href="{{ SITEURL }}/{{ tag.url}}" class="">
+		      {{ tag }}
+		    </a>
+		  </li>
+		  {% endfor %}
+
+                </ul>
+              </li>
+	      <li><a href="{{SITEURL}}/seasons.html">Seasons</a></li>
+            </ul>
+	  </nav>
+	</div>

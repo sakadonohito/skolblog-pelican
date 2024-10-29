@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+カテゴリー一覧
+{% endblock %}
+
+{% block content %}
+
+	<div class="content">
+
+	  <div class="item list-title-container">
+            <h2 class="title">カテゴリー一覧</h2>
+	  </div>
+
+	  {% for category,articles in categories %}
+
+	  <div class="item small">
+	    <a href="{{ SITEURL }}/{{ category.url}}" class="article-card">
+              <div class="eye-catching-image-container">
+		<img src="" alt="No image." class="eye-catching-image">
+	      </div>
+              <h3 class="title">{{ category }}</h3>
+	    </a>
+	  </div>
+
+	  {% endfor %}
+
+	  {% if categories|length == 0 %}
+	  <a href="{{ SITEURL}}/">Back to Home.</a>
+	  {% endif %}
+
+	</div>
+
+	{% endblock %}

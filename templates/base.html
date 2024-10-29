@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <link href="{{SITEURL}}/static/css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="parent">
+
+      {% include "partial/header.html" %}
+
+      <main class="main">
+	{% block content %}{% endblock %}
+      </main>
+      <div class="side-part">
+	<div></div>
+      </div>
+      <div class="footer-part">
+	<p>&copy; {{ CURRENT_YEAR }} {{ SITENAME }}. All rights reserved.</p>
+	<p>Proudly powered by Pelican, which takes great advantage of Python.</p>
+	<p>{{ SITEURL }}/ The theme is by SkolBlog-Pelican, thanks!</p>
+      </div>
+    </div>
+
+  </body>
+</html>

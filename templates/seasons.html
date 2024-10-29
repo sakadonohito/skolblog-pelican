@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-タグ一覧
+シーズン一覧
 {% endblock %}
 
 {% block content %}
@@ -9,26 +9,26 @@
 	<div class="content">
 
 	  <div class="item list-title-container">
-            <h2 class="title">タグ一覧</h2>
+            <h2 class="title">シーズン一覧</h2>
 	  </div>
 
-	  {% for tag,articles in tags %}
+	  {% for season in seasons %}
 
 	  <div class="item small">
-	    <a href="{{ SITEURL }}/{{ tag.url}}" class="article-card">
+	    <a href="{{ SITEURL }}/season/{{ season|replace(' ', '-') }}.html" class="article-card">
               <div class="eye-catching-image-container">
 		<img src="" alt="No image." class="eye-catching-image">
 	      </div>
-              <h3 class="title">{{ tag }}</h3>
+              <h3 class="title">{{ season }} シーズン</h3>
 	    </a>
 	  </div>
 
 	  {% endfor %}
 
-	  {% if tags|length == 0 %}
+	  {% if seasons|length == 0 %}
 	  <a href="{{ SITEURL}}/">Back to Home.</a>
 	  {% endif %}
 
 	</div>
 
-	{% endblock %}
+{% endblock %}

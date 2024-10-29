@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<div class="content">
+{% set latest = articles[0] %}
+	  <div class="item large">
+	    <a href="{{ SITEURL}}/{{ latest.url }}" class="article-card">
+
+		<div class="eye-catching-image-container">
+		{% if latest.metadata.image %}
+		<img src="{{ SITEURL }}/{{ latest.metadata.image }}" alt="{{ latest.title }}" class="eye-catching-image" />
+		{% else %}
+		<img src="" alt="No image." class="eye-catching-image">
+		{% endif %}
+	      </div>
+              <h2 class="title">{{ latest.title }}</h2>
+              <p class="date">投稿日: {{ latest.date.strftime('%Y-%m-%d') }}</p>
+	    </a>
+	  </div>
+
+	  {% for article in articles[1:5] %}
+	  <div class="item middle">
+	    <a href="{{ SITEURL}}/{{ article.url }}" class="article-card">
+              <div class="eye-catching-image-container">
+		{% if article.metadata.image %}
+		<img src="{{ SITEURL }}/{{ article.metadata.image }}" alt="{{ article.title}}" class="eye-catching-image" />
+		{% else %}
+		<img src="" alt="No image." class="eye-catching-image">
+		{% endif %}
+	      </div>
+              <h2 class="title">{{ article.title}}</h2>
+              <p class="date">投稿日: {{ article.date.strftime('%Y-%m-%d') }}</p>
+	    </a>
+	  </div>
+	  {% endfor %}
+
+	  {% if articles|length > 5 %}
+	  <div class="readmore"><a href="{{ SITEURL }}/archives.html">more...</a></div>
+	  {% endif %}
+	</div>
+
+{% endblock %}

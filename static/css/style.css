@@ -1,303 +1,467 @@
-     * {
-	 margin: 0;
-	 padding: 0;
-     }
-     body {
-	 /*font-family:;*/
-	 font-size: 2rem;
-     }
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    /*font-family:;*/
+    font-size: 2rem;
+}
 
-     .parent {
-	 display: grid;
-	 grid-template-columns: repeat(12, 1fr);
-	 grid-template-rows: 25vh 1fr auto;
-	 gap: 0px;
-	 row-gap: 1rem;
-	 min-height: 100vh;
-	 container: layout/inline-size;
-     }
+.parent {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 25vh 1fr auto;
+    gap: 0px;
+    row-gap: 1rem;
+    min-height: 100vh;
+    container: layout/inline-size;
+}
 
-     .header {
-	 grid-column: span 12;
+.header {
+    grid-column: span 12;
 
-	 display: flex;
-	 flex-direction: column;
-	 justify-content: space-between;
-	 background-color: #f8f8f8;
-	 border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ccc;
 
-	 background-image: url('../img/sample_header_image_3000x175.webp');
-	 background-size: cover;
-	 background-position: center;
-	 max-hight: 175px;
+    /*background-image: url('/static/images/sample_header_image_3000x175.webp');*/
+    background-image: url('/static/images/header_image_1792x616.png');
+    background-size: 100% 100%;
+    background-position: center;
+    max-height: 325px; /* 175px */
 
-     }
+}
 
-     .site-title-container {
-	 display: flex;
-	 align-items: flex-start; /* 左上に揃える */
-	 margin: 1rem;
-     }
+.site-title-container {
+    display: flex;
+    align-items: flex-start; /* 左上に揃える */
+    margin: 1rem;
+}
 
-     .navi-container {
-	 display: flex;
-	 align-items: center; /* ナビとロゴを横並びで下部に配置 */
-	 justify-content: flex-start;
-	 background-color: #4F2683;
-	 /*margin-top: auto;*/
-     }
+.site-title-container > h1.site-name {
+    background-color: #4f2683;
+    color: #ffff;
+    padding: 0.5rem;
+}
 
-     .logo-container {
-	 display: flex;
-	 align-items: center;
-	 margin-left: 15px;
-	 margin-right: 20px;
-     }
+.site-title-container > h1.site-name > a  {
+    text-decoration: none;
+    color: inherit;
+}
 
-     .logo-image {
-	 width: 50px;
-	 height: auto;
-	 margin-right: 15px;
-     }
+.navi-container {
+    display: flex;
+    align-items: center; /* ナビとロゴを横並びで下部に配置 */
+    justify-content: flex-start;
+    background-color: #4F2683;
+    /*margin-top: auto;*/
+}
 
-     .site-name {
-	 font-size: 1.8rem;
-	 margin: 0;
-     }
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 20px;
+}
 
-     .nav-menu ul {
-	 display: flex;
-	 list-style-type: none;
-	 margin: 0;
-	 padding: 0;
-	 align-items: center;
-     }
+.logo-image {
+    display: block; /* 重要。こうしないとinline要素扱いになり親のaタグが余計な余白を作ってしまう */
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+}
 
-     .nav-menu ul li {
-	 margin-right: 20px;
-     }
+.site-name {
+    font-size: 1.8rem;
+    margin: 0;
+}
 
-     .nav-menu ul li a {
-	 display: block;
-	 line-height: 48px;
-	 text-decoration: none;
-	 font-size: 1.2rem;
-	 color: #ffffff;
-     }
+.nav-menu ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
 
-     .nav-menu ul li a:hover {
-	 color: #007bff; /* ホバー時の色変更 */
-     }
+.nav-menu ul li {
+    margin-right: 20px;
+}
 
-     .main {
-	 grid-column: 4 / 10;
-	 grid-row-start: 2;
-	 container: main-container/inline-size;
-     }
+.nav-menu ul li a {
+    display: block;
+    line-height: 48px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
 
-     @container layout (max-width: 1165px) { /* iPad Air h */
-	 .main {
-	     grid-column: 3 / 9;
+.nav-menu ul li a:hover {
+    color: #007bff; /* ホバー時の色変更 */
+}
 
-	 }
-     }
+/* SP用ナビパート */
+.sp-navi-container {
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #4F2683;
+}
+/* ハンバーガーメニューアイコン */
+.sp-navi-container .hamburger {
+    font-size: 24px;
+    cursor: pointer;
+    color: #ffffff;
+    margin-right: 0.5rem;
+}
+/* メニューのトグル */
+.toggle-menu {
+    display: none; /* チェックボックス自体は非表示 */
+}
+
+/* メニューのスタイル */
+.sp-nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+/* チェック時にメニューを表示 */
+#toggle-menu:checked + .hamburger + .sp-nav-menu {
+    right: 0;
+}
+
+/* モーダルが表示されたときにスクロールを無効化 */
+body:has(input#toggle-menu:checked) .main {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* メニューの項目スタイル */
+.sp-nav-menu ul {
+    text-align: center;
+}
+
+.sp-nav-menu ul li {
+    margin: 20px 0;
+}
+
+.sp-nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    /*margin: 1rem 0;*/
+}
+
+.submenu {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+/* 閉じるボタン */
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+/* メディアクエリ：スマホサイズでハンバーガーメニュー表示 */
+@media (max-width: 480px) {
+    .navi-container {
+	display: none;
+    }
+    .sp-navi-container {
+	display: flex;
+    }
+
+    .hamburger {
+        display: inline-block;
+    }
+}
+
+.main {
+    grid-column: 4 / 10;
+    grid-row-start: 2;
+    container: main-container/inline-size;
+}
+
+@container layout (max-width: 1165px) { /* iPad Air h */
+    .main {
+	grid-column: 3 / 9;
+
+    }
+}
 /*     @container layout (max-width: 896px) {*/ /* iPhone XR h */
-     @container layout (max-width: 912px) { /* Surface Pro 7 v */
-	 .main {
-	     grid-column: span 9;
-	 }
-     }
-     @container layout (max-width: 430px) {
-	 .main {
-	     grid-column: span 12;
-	 }
-     }
+@container layout (max-width: 912px) { /* Surface Pro 7 v */
+    .main {
+	grid-column: span 9;
+    }
+}
+@container layout (max-width: 430px) {
+    .main {
+	grid-column: span 12;
+    }
+}
 
-     .content {
-	 display: grid;
-	 grid-template-columns: repeat(12, 1fr);
-	 grid-template-rows: auto auto;
-	 gap: 10px;
-	 padding: 10px;
-	 max-width: calc(100vw / 2);
-	 container: contents-container/inline-size;
-     }
-     @container main-container (max-width: 844px) { /* iPhone 12Pro h */
-	 .content {
-	     max-width: calc(100vw * 2 / 3);
-	     margin-left: auto;
-	 }
-     }
+.content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto repeat(auto-fil,1fr);
+    gap: 10px;
+    padding: 10px;
+    max-width: calc(100vw / 2);
+    container: contents-container/inline-size;
+}
+@container main-container (max-width: 844px) { /* iPhone 12Pro h */
+    .content {
+	max-width: calc(100vw * 2 / 3);
+	margin-left: auto;
+    }
+}
 
-    @container main-container (max-width: 430px) { /* スマホ v 最大値 */
-	 .content {
-	     max-width: 100%;
-	 }
-     }
+@container main-container (max-width: 430px) { /* スマホ v 最大値 */
+    .content {
+	max-width: 100%;
+    }
+}
 
-     .item {
-	 background-color: #f9f9f9;
-	 padding: 10px auto;
-	 border: 1px solid #ccc;
-	 text-align: center;
-	 aspect-ratio: 792 / 586;
-	 width: auto;
-     }
+.item {
+    background-color: #f9f9f9;
+    padding: 10px auto;
+    border: 1px solid #ccc;
+    text-align: center;
+    /*aspect-ratio: 792 / 586;*/
+    /*width: auto;*/
+    width: 100%;
+}
 
-     .content > article {
-	 grid-column: span 12;
-     }
-     .content > article > section {
-	 margin: 10px auto;
-     }
-     .content > article > section > p {
-	 font-size: 1.25rem;
-     }
+.content > article {
+    grid-column: span 12;
+}
+.content > article > section {
+    margin: 2rem auto;
+}
+.content > article > header > p {
+    font-size: 1rem;
+}
 
-     /* TOP画面の1つ目のアイテムは大きくする */
-     .item.large {
-	 grid-column: span 12;
-	 max-width: 792px;
-	 justify-self: center;
-	 width: 100%;
-     }
+/* TOP画面の1つ目のアイテムは大きくする */
+.item.large {
+    grid-column: span 12;
+    max-width: 792px;
+    justify-self: center;
+    /*width: 100%;*/
+}
 
-     /* リストレイアウトの時の1行目のタイトル要素 */
-     .item.list-title-container {
-	 grid-column: span 12;
-	 max-width: 792px;
-	 width: 100%;
-	 aspect-ratio: unset;
-	 background-color: unset;
-	 border: unset;
-     }
-     .item.list-title-container > h2 {
-	 text-align: left;
-	 display: inline-block;
-	 width: 100%;
-	 border-bottom: 1px solid #ccc;
-	 font-size: 1.5rem;
-     }
+/* リストレイアウトの時の1行目のタイトル要素 */
+.item.list-title-container {
+    grid-column: span 12;
+    /*max-width: 792px;*/
+    width: 100%;
+    aspect-ratio: unset;
+    background-color: unset;
+    border: unset;
+}
+.item.list-title-container > h2 {
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.5rem;
+}
 
-     /* 2つ目以降のアイテムは小さく、2x2に並べる */
-     .item.middle {
-	 grid-column: span 6;
-	 max-width: calc(396px - 6px) ;/* gap他見栄えの分調整 */
-	 width: 100%;
-     }
+/* 2つ目以降のアイテムは小さく、2x2に並べる */
+.item.middle {
+    grid-column: span 6;
+    max-width: calc(396px - 6px) ;/* gap他見栄えの分調整 */
+    width: 100%;
+}
 
-     .item.middle:nth-child(odd) {
-	 justify-self: start;
-     }
+.item.middle:nth-child(odd) {
+    justify-self: start;
+}
 
-     .item.middle:nth-child(even) {
-	 justify-self: end;
-     }
+.item.middle:nth-child(even) {
+    justify-self: end;
+}
 
-     /* 4列であるだけ並べる */
-     .item.small {
-	 grid-column: span 3;
-	 width: 100%;
-	 max-width: calc(((100vw / 2) - 50px) / 4);
-     }
+/* 4列であるだけ並べる */
+.item.small {
+    grid-column: span 3;
+    width: 100%;
+    max-width: calc(((100vw / 2) - 50px) / 4);
+}
 
-     @container contents-container (max-width: 640px) {
-	 .item.small {
-	     grid-column: span 4;
-	     /*max-width: calc(((100vw / 2) - 40px) / 3);*/
-	     max-width: 100%;
-	 }
-     }
-     /*@container contents-container (max-width: 486px) {*/
-     @container contents-container (max-width: 480px) { /* Surface Duo h?  */
-	 .item.small {
-	     grid-column: span 6;
-	     /*max-width: calc(((100vw / 2) - 30px) / 2);*/
-	 }
-     }
+/*@container contents-container (max-width: 640px) {*/
+@container contents-container (max-width: 684px) { /* Surface Pro 7 h */
+    .item.small {
+	grid-column: span 4;
+	/*max-width: calc(((100vw / 2) - 40px) / 3);*/
+	max-width: 100%;
+    }
+}
+/*@container contents-container (max-width: 486px) {*/
+/*@container contents-container (max-width: 480px) {*/ /* Surface Duo h?  */
+@container contents-container (max-width: 628px) { /* Surface Pro 7 v  */
+    .item.small {
+	grid-column: span 6;
+	/*max-width: calc(((100vw / 2) - 30px) / 2);*/
+    }
+}
 
-     @container contents-container (max-width: 430px) { /* スマホv の最大値 */
-	 .content .item.large {
-	     max-width: 100%;
-	 }
-	 .item.middle {
-	     grid-column: span 12;
-	 max-width: 100vw;
-	 }
-	 .item.small {
-	     grid-column: span 12;
-	     max-width: 100vw;
-	 }
-     }
+@container contents-container (max-width: 430px) { /* スマホv の最大値 */
+    .content .item.large {
+	max-width: 100%;
+    }
+    .item.middle {
+	grid-column: span 12;
+	max-width: 100vw;
+    }
+    .item.small {
+	grid-column: span 12;
+	max-width: 100vw;
+    }
+}
 
-     .content > article > section > pre {
-	 white-space: pre-wrap;  /* テキストを折り返す */
-	 word-wrap: break-word;  /* 長い単語でも折り返しを許可 */
-	 width: 100%;            /* 親要素の幅に合わせる */
-	 max-width: 100%;        /* 親要素を超えない */
-	 box-sizing: border-box;  /* パディングやボーダーを含めて幅を計算 */
-	 margin: 10px;
-     }
+a.article-card {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+}
 
-     .eye-catching-image-container {
-	 aspect-ratio: 1.77; /* ほぼ全ての画像枠に対応するアスペクト比 */
-	 width: 100%; /* レスポンシブに対応 */
-	 max-width: 1248px;
-	 height: auto;
-	 position: relative;
-     }
+a.article-card:hover {
+    transform: translateY(-5px);
+}
 
-     .eye-catching-image {
-         width: 100%;
-         height: auto;
-	 display: block;
-     }
 
-     .eye-catching-image:empty {
-	 background-image: url('../img/noimage_1248x772.webp');
-	 background-size: cover;
-	 background-position: center;
-	 width: 100%;
-	 height: 100%;
-     }
+.eye-catching-image-container {
+    /*aspect-ratio: 1.77;*/ /* ほぼ全ての画像枠に対応するアスペクト比 */
+    width: 100%; /* レスポンシブに対応 */
+    max-width: 1248px;
+    height: auto;
+    position: relative;
+}
 
-     .item > .title {
-         font-size: 1.25rem;
-         margin-top: 10px;
-	 margin-left: 1rem;
-	 text-align: left;
-     }
+.eye-catching-image {
+    aspect-ratio: 792 / 586;
+    width: 100%;
+    height: auto;
+    display: block;
+    /*object-fit: cover;*/
+}
 
-     .content > article > section > h2.title {
-	 font-size: 3rem;
-     }
+.eye-catching-image:empty {
+    background-image: url('/static/images/noimage_1248x772.webp');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
 
-     .item.large > .title {
-	 font-size: 1.5rem;
-     }
+.item .title {
+    font-size: 1.25rem;
+    margin-top: 10px;
+    margin-left: 1rem;
+    text-align: left;
+}
 
-     .item > .date {
-         font-size: 1rem;
-         color: #888;
-	 margin-left: 1rem;
-	 text-align: left;
-     }
+.content > article > section > h2.title {
+    font-size: 3rem;
+}
 
-     .side-part {
-	 grid-column: 10 / 12;
-	 grid-row: 2;
-     }
-     @container (max-width: 430px) {
-	 .parent .side-part {
-	     display: none;
-	 }
-     }
+.item.large .title {
+    font-size: 1.5rem;
+}
 
+.item .date {
+    font-size: 1rem;
+    color: #888;
+    margin-left: 1rem;
+    text-align: left;
+}
+
+.content .readmore {
+    grid-column: span 12;
+    justify-self: center;
+}
+
+/* sample page の見栄え専用: もう不要
+.content > article > section > pre {
+   white-space: pre-wrap;  /* テキストを折り返す *
+   word-wrap: break-word;  /* 長い単語でも折り返しを許可 *
+   width: 100%;            /* 親要素の幅に合わせる *
+   max-width: 100%;        /* 親要素を超えない *
+   box-sizing: border-box;  /* パディングやボーダーを含めて幅を計算 *
+   margin: 10px;
+}
+*/
+
+ .post-data h2,
+ .post-data h3,
+ .post-data h4 {
+     margin-top: 2rem;
+     margin-bottom: 1rem;
+ }
+
+
+ .post-data p,
+ .post-data a,
+ .post-data span {
+     font-size: 1rem;
+ }
+
+ .side-part {
+     grid-column: 10 / 12;
+     grid-row: 2;
+ }
+ @container (max-width: 430px) {
+     .parent .side-part {
+	 display: none;
+     }
+ }
+
+ .footer-part {
+     grid-column: span 12;
+     /*grid-row-start: 3;*/ /* parentの3行目 */
+     display: flex;
+     justify-content: center;
+     background-color: #4F2683;
+     color: #FFFFFF;
+ }
+
+ .footer-part p {
+     font-size: 0.75rem;
+     padding: 1rem 2rem;
+ }
+
+ @media (max-width: 480px) { /* iPhone 4 h */
      .footer-part {
-	 grid-column: span 12;
-	 grid-row-start: 3;
-	 display: flex;
-	 justify-content: center;
-	 background-color: #4F2683;
-	 color: #FFFFFF;
+         flex-direction: column; /* 縦並びに変更 */
+         align-items: center;    /* 中央に寄せる */
      }
+
+     .footer-part p {
+         padding: 0.25rem 0;   /* パディングを調整 */
+         text-align: center;     /* 中央揃え */
+     }
+ }
