@@ -1,1 +1,4 @@
 .DS_Store
+plugin/__pycache__
+static/images/default_thumbnail.webp
+static/images/sample_header_image_3000x175.webp

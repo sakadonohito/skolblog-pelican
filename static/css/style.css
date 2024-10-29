@@ -371,7 +371,8 @@ a.article-card:hover {
 }
 
 .eye-catching-image:empty {
-    background-image: url('/static/images/noimage_1248x772.webp');
+    background-image: url('/static/images/default_thumbnail.png');
+    /*background-image: url('/static/images/noimage_1248x772.webp');*/
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -434,7 +435,19 @@ a.article-card:hover {
      grid-column: 10 / 12;
      grid-row: 2;
  }
- @container (max-width: 430px) {
+
+ @container contents-container (max-width: 430px) { /* スマホ縦 横幅MAX */
+     .post-data table th,
+     .post-data table td {
+	 /*padding: 6px;*/             /* パディングを少し小さくする */
+	padding-top: 0.5rem;
+	font-size: 1rem;
+        white-space: normal;      /* 折り返しを有効にする */
+        word-break: break-word;   /* 長い単語も折り返す */
+     }
+ }
+
+ @container layout (max-width: 430px) {
      .parent .side-part {
 	 display: none;
      }

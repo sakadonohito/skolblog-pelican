@@ -4,6 +4,10 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    {% include "partial/head-optional.html" %}
+    {% include "partial/favicon.html" %}
+    {% include "partial/head-og.html" %}
+    {% include "partial/head-rss.html" %}
     <link href="{{SITEURL}}/static/css/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
