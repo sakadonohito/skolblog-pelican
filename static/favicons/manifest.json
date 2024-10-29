@@ -1,7 +1,7 @@
 {
-    "name": "{{SITENAME}}",
+    "name": "SKOL from JP",
   "short_name": "blog",
-    "description": "{{SITESUBTITLE}}",
+    "description": "japanese minnesota vikings fan blog.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
