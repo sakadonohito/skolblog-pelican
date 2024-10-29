@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-
+{% set caller = 'article' %}
 	<div class="content">
 	  <article>
 	    <header>
@@ -19,18 +19,12 @@
 		    <a href="{{ SITEURL }}/tag/{{ tag }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
 		    {% endfor %}
 		    {% else %}
-		    <p>
-		      {% endif %}
-		    </p>
+
+		    {% endif %}
+		  </p>
 		</p>
 	    </header>
-            <div class="eye-catching-image-container">
-	      {% if article.metadata.image %}
-              <img src="{{ SITEURL }}/{{ article.metadata.image }}" alt="{{ article.title }}" class="eye-catching-image"/>
-	      {% else %}
-	      <img src="" alt="No image." class="eye-catching-image"/>
-              {% endif %}
-	    </div>
+	    {% include "partial/eyecatch.html"  %}
 	    <section>
 	      <div class="post-data">{{ article.content }}</div>
 	    </section>

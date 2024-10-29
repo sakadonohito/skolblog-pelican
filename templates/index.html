@@ -21,17 +21,7 @@
 
 	  {% for article in articles[1:5] %}
 	  <div class="item middle">
-	    <a href="{{ SITEURL}}/{{ article.url }}" class="article-card">
-              <div class="eye-catching-image-container">
-		{% if article.metadata.image %}
-		<img src="{{ SITEURL }}/{{ article.metadata.image }}" alt="{{ article.title}}" class="eye-catching-image" />
-		{% else %}
-		<img src="" alt="No image." class="eye-catching-image">
-		{% endif %}
-	      </div>
-              <h2 class="title">{{ article.title}}</h2>
-              <p class="date">投稿日: {{ article.date.strftime('%Y-%m-%d') }}</p>
-	    </a>
+	    {% include "partial/card.html" %}
 	  </div>
 	  {% endfor %}
 

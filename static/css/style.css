@@ -379,6 +379,10 @@ a.article-card:hover {
     height: 100%;
 }
 
+.eye-catching-image:has(.getty) {
+    aspect-ratio: unset;
+}
+
 .item .title {
     font-size: 1.25rem;
     margin-top: 10px;

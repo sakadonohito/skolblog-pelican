@@ -1,0 +1,5 @@
+            <a href="{{ SITEURL}}/{{ article.url }}" class="article-card">
+	      {% include "partial/eyecatch.html" %}
+              <h2 class="title">{{ article.title}}</h2>
+              <p class="date">投稿日: {{ article.date.strftime('%Y-%m-%d') }}</p>
+	    </a>
