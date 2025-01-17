@@ -1,8 +1,8 @@
               <div class="eye-catching-image-container">
-		{% if article.metadata.image %}
-		<img src="{{ SITEURL }}/{{ article.metadata.image }}" alt="{{ article.title }}" class="eye-catching-image"/>
-		{% elif caller and article.gettylinkcode %}
+		{% if caller and article.gettylinkcode %}
 		<div class="eye-catching-image">{{article.gettylinkcode}}</div>
+		{% elif article.metadata.image %}
+		<img src="{{ SITEURL }}/{{ article.metadata.image }}" alt="{{ article.title }}" class="eye-catching-image"/>
 		{% else %}
 		<img src="" alt="No Image." class="eye-catching-image"/>
 		{% endif %}
