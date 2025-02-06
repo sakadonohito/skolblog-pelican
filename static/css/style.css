@@ -431,9 +431,65 @@ a.article-card:hover {
 
  .post-data p,
  .post-data a,
- .post-data span {
+ .post-data span,
+ .post-data li {
      font-size: 1rem;
  }
+
+/* 実験 */
+/* テーブルの基本スタイル */
+table {
+  border-collapse: collapse;
+  width: auto;
+  max-width: 100%;
+  table-layout: auto;
+  overflow-x: auto;
+  font-size: 1rem;
+}
+
+/* ヘッダー部分のスタイル */
+th {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* データ部分のスタイル */
+td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  white-space: nowrap;  /* 長すぎる単語は折り返さない */
+  word-wrap: break-word; /* それでも長すぎる場合は折り返す */
+}
+
+/* 偶数行の背景色を変更（読みやすさ向上） */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* ヘッダーのフォントを太字にする */
+thead th {
+  font-weight: bold;
+}
+
+/* 数値データを右揃え */
+td:nth-child(2),  /* 2列目 */
+td:nth-child(5),  /* 5列目 */
+td:nth-child(7) { /* 7列目 */
+  text-align: right;
+}
+
+/* テーブルのレスポンシブ対応 */
+@media screen and (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+/* end 実験 */
 
  .side-part {
      grid-column: 10 / 12;
