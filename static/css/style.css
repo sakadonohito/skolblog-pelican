@@ -421,24 +421,24 @@ a.article-card:hover {
 }
 */
 
- .post-data h2,
- .post-data h3,
- .post-data h4 {
+.post-data h2,
+.post-data h3,
+.post-data h4 {
      margin-top: 2rem;
      margin-bottom: 1rem;
  }
 
 
- .post-data p,
- .post-data a,
- .post-data span,
- .post-data li {
+.post-data p,
+.post-data a,
+.post-data span,
+.post-data li {
      font-size: 1rem;
  }
 
 /* 実験 */
 /* テーブルの基本スタイル */
-table {
+.post-data table {
   border-collapse: collapse;
   width: auto;
   max-width: 100%;
@@ -448,7 +448,7 @@ table {
 }
 
 /* ヘッダー部分のスタイル */
-th {
+.post-data th {
   background-color: #f4f4f4;
   border: 1px solid #ddd;
   padding: 8px 12px;
@@ -457,7 +457,7 @@ th {
 }
 
 /* データ部分のスタイル */
-td {
+.post-data td {
   border: 1px solid #ddd;
   padding: 8px 12px;
   white-space: nowrap;  /* 長すぎる単語は折り返さない */
@@ -465,25 +465,25 @@ td {
 }
 
 /* 偶数行の背景色を変更（読みやすさ向上） */
-tr:nth-child(even) {
+.post-data tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
 /* ヘッダーのフォントを太字にする */
-thead th {
+.post-data thead th {
   font-weight: bold;
 }
 
 /* 数値データを右揃え */
-td:nth-child(2),  /* 2列目 */
-td:nth-child(5),  /* 5列目 */
-td:nth-child(7) { /* 7列目 */
+.post-data td:nth-child(1),  /* 2列目 */
+.post-data td:nth-child(2),  /* 5列目 */
+.post-data td:nth-child(3) { /* 7列目 */
   text-align: right;
 }
 
 /* テーブルのレスポンシブ対応 */
 @media screen and (max-width: 768px) {
-  table {
+  .post-data table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
