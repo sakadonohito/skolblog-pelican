@@ -436,6 +436,10 @@ a.article-card:hover {
      font-size: 1rem;
  }
 
+.post-data ul {
+  padding-left: 1.5em;
+}
+
 /* 実験 */
 /* テーブルの基本スタイル */
 .post-data table {
